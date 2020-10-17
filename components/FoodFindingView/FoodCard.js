@@ -3,8 +3,11 @@ import { View, StyleSheet, Text, Button } from 'react-native';
 
 
 
-const FoodCard = ({ foodItem }) => {
-    return (
+const FoodCard = ({ foodItem, added }) => {
+
+
+
+    if (added) {
         <View style={styles.card}>
             <View style={styles.imageCont}>
 
@@ -14,8 +17,9 @@ const FoodCard = ({ foodItem }) => {
 
                 <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
                 <View style={styles.spacer}></View>
-                <Button
-                    title="Add"
+
+                <Button style={{ backgroundColor: "red" }}
+                    title="Remove"
                 />
             </View>
             <View style={styles.rowContainer}>
@@ -23,7 +27,29 @@ const FoodCard = ({ foodItem }) => {
                 <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
             </View>
         </View>
-    );
+    } else {
+        return (
+            <View style={styles.card}>
+                <View style={styles.imageCont}>
+
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.foodItemText}>{foodItem.title} </Text>
+
+                    <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
+                    <View style={styles.spacer}></View>
+
+                    <Button
+                        title="Add"
+                    />
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
+                    <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
+                </View>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

@@ -6,6 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { create } from 'react-test-renderer';
 import PaymentView from './components/PaymentView/PaymentView';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import FoodItemsReducer from './components/reducers/FoodItemsReducer';
 
 function HomeScreen() {
   return (
@@ -16,19 +19,21 @@ function HomeScreen() {
 }
 
 const Stack = createStackNavigator();
+const itemsStore = createStore(FoodItemsReducer);
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
-        <Stack.Screen name="Calculation" component={PaymentView} />
-      </Stack.Navigator>
-      {/* <View style={styles.container}>
+    <Provider store={itemsStore}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
+          <Stack.Screen name="Calculation" component={PaymentView} />
+        </Stack.Navigator>
+        {/* <View style={styles.container}>
         <FoodFindingMain />
       </View> */}
-    </NavigationContainer>
-
+      </NavigationContainer>
+    </Provider>
   );
 }
 
