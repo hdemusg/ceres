@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import { StyleSheet, Text, View } from 'react-native';
-import { FoodFindingMain } from './components/FoodFindingMain';
+import BusinessView from './components/BusinessView/BusinessView';
+import FoodFindingMain from './components/FoodFindingView/FoodFindingMain';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <BusinessView/>
+    // <FoodFindingMain/>
   );
 }
 
