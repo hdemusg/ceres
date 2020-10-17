@@ -52,15 +52,13 @@ const initState = {
             stars: 4
         }
     ],
-    addedToCart: [],
-    total: 0
+    addedToCart: []
 };
 
 const FoodItemsReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_ITEM_TO_CART':
             const { availableItems, addedToCart } = state;
-
             let index = availableItems.indexOf(action.payload);
             if (index >= 0) {
                 const returnedItem = availableItems.splice(index, 1)[0];

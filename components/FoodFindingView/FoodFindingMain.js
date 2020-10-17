@@ -5,9 +5,10 @@ import FoodCard from './FoodCard';
 
 const mapStateToProps = (state, ownProps) => {
     const { foodItemsState } = state;
+    console.log(foodItemsState);
     return {
         availableItems: foodItemsState.availableItems,
-        addedToCart: foodItemsState.addedToCart
+        addedToCart: foodItemsState.addedToCart,
     };
 };
 
@@ -20,7 +21,7 @@ const renderAvailItems = ({ item }) => (
     <FoodCard foodItem={item} added={false} />
 );
 
-const FoodFindingMain = ({ navigation, availableItems, addedToCart }) => {
+const FoodFindingMain = ({ navigation, availableItems, addedToCart, total }) => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -35,7 +36,6 @@ const FoodFindingMain = ({ navigation, availableItems, addedToCart }) => {
                 data={availableItems}
                 renderItem={renderAvailItems}
                 keyExtractor={item => item.id}
-                style={styles.flatListView}
             />
         </SafeAreaView>
     );

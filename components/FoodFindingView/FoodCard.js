@@ -7,25 +7,27 @@ import { bindActionCreators } from 'redux';
 
 const FoodCard = ({ foodItem, added, addFoodItemMessage }) => {
     if (added) {
-        <View style={styles.card}>
-            <View style={styles.imageCont}>
+        return (
+            <View style={styles.card}>
+                <View style={styles.imageCont}>
 
-            </View>
-            <View style={styles.rowContainer}>
-                <Text style={styles.foodItemText}>{foodItem.title} </Text>
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.foodItemText}>{foodItem.title} </Text>
 
-                <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
-                <View style={styles.spacer}></View>
+                    <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
+                    <View style={styles.spacer}></View>
 
-                <Button style={{ backgroundColor: "red" }}
-                    title="Remove"
-                />
+                    <Button style={{ backgroundColor: "red" }}
+                        title="Remove"
+                    />
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
+                    <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
+                </View>
             </View>
-            <View style={styles.rowContainer}>
-                <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
-                <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
-            </View>
-        </View>
+        );
     } else {
         return (
             <View style={styles.card}>
