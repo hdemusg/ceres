@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text, StatusBar, Button } from 'react-native';
+import { View, StyleSheet, Text, Button } from 'react-native';
 
 
 
@@ -11,7 +11,9 @@ const FoodCard = ({ foodItem }) => {
             </View>
             <View style={styles.rowContainer}>
                 <Text style={styles.foodItemText}>{foodItem.title} </Text>
+
                 <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
+                <View style={styles.spacer}></View>
                 <Button
                     title="Add"
                 />
@@ -25,13 +27,17 @@ const FoodCard = ({ foodItem }) => {
 
 const styles = StyleSheet.create({
     card: {
-        width: "100%",
+        width: "95%",
         backgroundColor: "#fdfffc",
         borderWidth: 4,
         borderColor: "#20232a",
         borderRadius: 6,
-        paddingBottom: 10,
-        height: "20vh"
+        height: "20vh",
+        marginTop: 2,
+        marginBottom: 2
+    },
+    spacer: {
+        flexGrow: 2
     },
     rowContainer: {
         flexDirection: 'row'
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     foodPriceText: {
-        fontSize: 25
+        fontSize: 20
     },
     imageCont: {
         height: "50%"
