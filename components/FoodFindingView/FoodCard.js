@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { addFoodItemMessage } from '../reducers/FoodItemsActions';
+import { bindActionCreators } from 'redux';
 
 
-
-const FoodCard = ({ foodItem, added }) => {
-
-
-
+const FoodCard = ({ foodItem, added, addFoodItemMessage }) => {
     if (added) {
         <View style={styles.card}>
             <View style={styles.imageCont}>
@@ -41,6 +40,7 @@ const FoodCard = ({ foodItem, added }) => {
 
                     <Button
                         title="Add"
+                        onPress={() => addFoodItemMessage(foodItem)}
                     />
                 </View>
                 <View style={styles.rowContainer}>
@@ -51,6 +51,12 @@ const FoodCard = ({ foodItem, added }) => {
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({
+        addFoodItemMessage
+    }, dispatch)
+);
 
 const styles = StyleSheet.create({
     card: {
@@ -79,4 +85,4 @@ const styles = StyleSheet.create({
         height: "50%"
     }
 });
-export default FoodCard;
+export default connect(null, mapDispatchToProps)(FoodCard);

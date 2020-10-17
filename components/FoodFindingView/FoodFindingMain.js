@@ -12,24 +12,25 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-const FoodFindingMain = ({ navigation, availableItems, addedToCart }) => {
+const renderCartItems = ({ item }) => {
+    console.log("render cart items", item);
+    <FoodCard foodItem={item} added={true} />
+}
+const renderAvailItems = ({ item }) => (
+    <FoodCard foodItem={item} added={false} />
+);
 
-    const renderCartItems = ({ item }) => {
-        <FoodCard foodItem={item} added={true} />
-    }
-    const renderAvailItems = ({ item }) => (
-        <FoodCard foodItem={item} added={false} />
-    );
+const FoodFindingMain = ({ navigation, availableItems, addedToCart }) => {
 
     return (
         <SafeAreaView style={styles.container}>
             <Button
                 title="Checkout"
-                onPress={() =>
-                    navigation.navigate('Calculation')
-                }
+                onPress={() => {
+                    navigation.navigate('Calculation', { cartItems: addedToCart });
+                }}
             />
-            <FlatList data={addedToCart} renderItem={renderCartItems} keyExtractor={item => item.id} />
+            <FlatList data={addedToCart} renderItem={renderCartItems} keyExtractor={item => item.id} extraData={renderCartItems} />
             <FlatList
                 data={availableItems}
                 renderItem={renderAvailItems}

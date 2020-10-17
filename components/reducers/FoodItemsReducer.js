@@ -60,9 +60,15 @@ const FoodItemsReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_ITEM_TO_CART':
             const { availableItems, addedToCart } = state;
-            const retrievedItem = availableItems.splice(action.payload, 1);
-            addedToCart.push(retrievedItem);
-            const newState = { availableItems, addedToCart };
+
+            let index = availableItems.indexOf(action.payload);
+            if (index >= 0) {
+                const returnedItem = availableItems.splice(index, 1)[0];
+                addedToCart.push(returnedItem);
+            } else {
+                console.log(index, action.payload.title, " nonexists?");
+            }
+            const newState = { availableItems, addedToCart }
             return newState;
         default:
             return state;
