@@ -18,8 +18,9 @@ const FoodCard = ({ foodItem }) => {
                     title="Add"
                 />
             </View>
-            <View>
-                <Text style={styles.vendorText}>{foodItem.vendor}</Text>
+            <View style={styles.rowContainer}>
+                <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
+                <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
             </View>
         </View>
     );
@@ -27,7 +28,7 @@ const FoodCard = ({ foodItem }) => {
 
 const styles = StyleSheet.create({
     card: {
-        width: "95%",
+        width: "100%",
         backgroundColor: "#fdfffc",
         borderWidth: 4,
         borderColor: "#20232a",

@@ -1,52 +1,8 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Button, Alert } from 'react-native';
 import FoodCard from './FoodCard';
 
 
-
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        title: 'First Item',
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        title: 'Third Item',
-    },
-    {
-        id: '123',
-        title: 'Fourth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-    {
-        id: '456',
-        title: 'Fifth Item',
-    },
-
-];
 
 const FOODDATA = [
     {
@@ -55,7 +11,8 @@ const FOODDATA = [
         price: 15.00,
         time: '15 min',
         id: 1,
-        stars: 5
+        stars: 5,
+        qty: 1
     },
     {
         title: 'Veggie Sandwich',
@@ -99,24 +56,24 @@ const FOODDATA = [
     }
 ];
 
-// const Item = ({  }) => (
-//     <View style={styles.item}>
-//         <FoodCard foodItem={title} />
-//         {/* <Text style={styles.title}>{title}</Text> */}
-//     </View>
-// );
-
-const FoodFindingMain = () => {
+const FoodFindingMain = ({ navigation }) => {
     const renderItem = ({ item }) => (
         < FoodCard foodItem={item} />
     );
 
     return (
         <SafeAreaView style={styles.container}>
+            <Button
+                title="Next"
+                onPress={() =>
+                    navigation.navigate('Calculation')
+                }
+            />
             <FlatList
                 data={FOODDATA}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                style={styles.flatListView}
             />
         </SafeAreaView>
     );
@@ -125,17 +82,22 @@ const FoodFindingMain = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        display: "flex",
+        alignContent: "center",
         marginTop: StatusBar.currentHeight || 0,
     },
-    item: {
-        backgroundColor: '#f9c2ff',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
+    Footer: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#FF9800',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 0
     },
-    title: {
-        fontSize: 32,
-    },
+    doubleButton: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    }
 });
 export default FoodFindingMain;
