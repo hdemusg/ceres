@@ -27,7 +27,7 @@ const FoodFindingMain = ({ navigation, availableItems, addedToCart }) => {
             <Button
                 title="Checkout"
                 onPress={() => {
-                    navigation.navigate('Calculation', { cartItems: addedToCart });
+                    navigation.navigate('Cart', { cartItems: addedToCart });
                 }}
             />
             <FlatList data={addedToCart} renderItem={renderCartItems} keyExtractor={item => item.id} extraData={renderCartItems} />

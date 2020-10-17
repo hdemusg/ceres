@@ -27,7 +27,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
-          <Stack.Screen name="Calculation" component={PaymentView} />
+          <Stack.Screen name="Cart" component={PaymentView} />
         </Stack.Navigator>
         {/* <View style={styles.container}>
         <FoodFindingMain />

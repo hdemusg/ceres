@@ -14,7 +14,7 @@ const PaymentView = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     cont: {
         width: "100%",
-        backgroundColor: "red",
+
         height: "100%"
     }
 })
