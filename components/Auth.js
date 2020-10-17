@@ -1,15 +1,20 @@
-import React, { Component, useState} from 'react';
+import React, {useState} from 'react';
+//import Realm from 'realm';
 import { StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native';
+import axios from 'axios';
 
-function handleSignup() {
-    console.log("Signup");
+//axios.defaults.baseURL = "http://localhost:3000";
+
+function handleSignup(email, password, selectedValue) {
+    console.log(email, password, selectedValue, "S");
 }
 
-function handleLogin() {
-    console.log("Login");
+function handleLogin(email, password) {
+    console.log(email, password, "L");
 }
 
 export function Auth() {
+      
         const [selectedValue, setSelectedValue] = useState("consumer");
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
@@ -30,8 +35,8 @@ export function Auth() {
         return (
             <View style={styles.container}>
             <Text style={styles.title}>Welcome!</Text>
-            <TextInput style={styles.input} placeholder={"email"}></TextInput>
-            <TextInput style={styles.input} secureTextEntry={true} placeholder={"password"}></TextInput>
+            <TextInput style={styles.input} onChangeText={(text) => setEmail(text)} placeholder={"email"}></TextInput>
+            <TextInput style={styles.input} onChangeText={(text) => setPassword(text)} secureTextEntry={true} placeholder={"password"}></TextInput>
             <Picker selectedValue = {selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
               <Picker.Item label = "Consumer" value = "consumer" />
               <Picker.Item label = "Messenger" value = "messenger" />
@@ -42,8 +47,8 @@ export function Auth() {
               flexDirection: "row",
               padding: 20
             }}>
-              <Button style={{backgroundColor: '#0f0', color: '#fff'}} onPress={handleSignup} title={"Sign Up"}></Button>
-              <Button style={{backgroundColor: '#0f0', color: '#fff'}} onPress={handleLogin} title={"Log In"}></Button>
+              <Button style={{backgroundColor: '#0f0', color: '#fff'}} onPress={(email, password, selectedValue) => handleSignup(email, password, selectedValue)} title={"Sign Up"}></Button>
+              <Button style={{backgroundColor: '#0f0', color: '#fff'}} onPress={(email, password) => handleLogin(email, password)} title={"Log In"}></Button>
             </View>
            </View>
         );
