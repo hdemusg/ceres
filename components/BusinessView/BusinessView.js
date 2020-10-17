@@ -1,4 +1,6 @@
 import React from "react";
+import { View } from 'react-native';
+
 import {Component} from "react";
 import FoodCard from "../FoodFindingView/FoodCard";
 
@@ -48,7 +50,7 @@ export default class BusinessView extends Component {
 
     render() {
         return (
-            <div>
+            <View>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Vendor:
@@ -75,7 +77,7 @@ export default class BusinessView extends Component {
                 <ul>
                     {this.renderItems()}
                 </ul>
-            </div>
+            </View>
         );
     }
 }
