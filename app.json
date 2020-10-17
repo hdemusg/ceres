@@ -1,0 +1,12 @@
+{
+  "name": "ceres",
+  "displayName": "ceres",
+  "expo": {
+    "name": "ceres",
+    "slug": "ceres",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
