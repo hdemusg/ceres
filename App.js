@@ -17,6 +17,23 @@ export default function App() {
   );
 }
 
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
+        <Stack.Screen name="Calculation" component={PaymentView} />
+      </Stack.Navigator>
+      {/* <View style={styles.container}>
+        <FoodFindingMain />
+      </View> */}
+    </NavigationContainer>
+
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
