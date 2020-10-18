@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Picker } from 'react-native';
 import axios from 'axios';
 
-//axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://localhost:3000";
 
 export function Auth() {
 
@@ -13,7 +13,18 @@ export function Auth() {
   }
 
   const handleLogin = (email, password, selectedVal) => {
-    console.log(email, password, selectedVal)
+    axios.get('/users/', { params: { email: email } })
+      .then(res => {
+        console.log(res.data[0]);
+        if (res.data[0].password === password && res.data[0].role === selectedVal) {
+          console.log(true)
+        } else {
+          console.log(false)
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      });
     // alert(this.state.email + " " + this.state.password);
   }
 
