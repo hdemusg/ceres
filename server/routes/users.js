@@ -23,7 +23,7 @@ router.post("/signup", (req, res) => {
     role: req.body.role,
     email: req.body.email,
     password: req.body.password,
-    name: "",
+    name: req.body.name,
   });
 
   user

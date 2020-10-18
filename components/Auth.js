@@ -8,13 +8,14 @@ axios.defaults.baseURL = "http://localhost:3000";
 
 export function Auth() {
 
-  const handleSignup = (email, password, selectedVal) => {
 
+  const handleSignup = (email, password, name, selectedVal) => {
+    console.log(email, password, name, selectedVal)
     // alert(this.state.email + " " + this.state.password + " " + this.state.selectedValue);
   }
 
-  const handleLogin = (email, password, selectedVal) => {
-    axios.get('/users/', { params: { email: email } })
+  const handleLogin = (email, password, name, selectedVal) => {
+    axios.get('/users/', { params: { email: } })
       .then(res => {
         console.log(res.data[0]);
         if (res.data[0].password === password && res.data[0].role === selectedVal) {
@@ -34,6 +35,7 @@ export function Auth() {
   const [selectedValue, setSelectedValue] = useState("consumer");
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
+  const [name, onChangeName] = useState("");
 
   /*
   const handle = async () =>
@@ -51,8 +53,9 @@ export function Auth() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome!</Text>
-      <TextInput style={styles.input} value={email} onChangeText={(text) => { onChangeEmail(text) }} placeholder={"email"}></TextInput>
-      <TextInput style={styles.input} value={password} onChangeText={(text) => onChangePassword(text)} secureTextEntry={true} placeholder={"password"}></TextInput>
+      <TextInput style={styles.input} value={email} onChangeText={(text) => { onChangeEmail(text) }} placeholder={"email (required)"}></TextInput>
+      <TextInput style={styles.input} value={password} onChangeText={(text) => onChangePassword(text)} secureTextEntry={true} placeholder={"password (required)"}></TextInput>
+      <TextInput style={styles.input} value={name} onChangeText={(text) => onChangeName(text)} secureTextEntry={true} placeholder={"name (signup only)"}></TextInput>
       <Picker style={styles.picker} selectedValue={selectedValue} value={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
         <Picker.Item label="Consumer" value="consumer" />
         <Picker.Item label="Messenger" value="messenger" />
@@ -63,8 +66,8 @@ export function Auth() {
           flexDirection: "row",
           padding: 20
         }}>
-        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleSignup(email, password, selectedValue)} title={"Sign Up"}></Button>
-        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleLogin(email, password, selectedValue)} title={"Log In"}></Button>
+        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleSignup(email, password, name, selectedValue)} title={"Sign Up"}></Button>
+        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleLogin(email, password, name, selectedValue)} title={"Log In"}></Button>
       </View>
     </View>
   );
