@@ -66,19 +66,19 @@ export default class BusinessView extends Component {
                     <label>
                         Title:
                         <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
-    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+    padding: 10, boxSizing: 'border-box', justifyContent: "center", boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="title" value={this.state.title} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Price:
                         <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
-    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="price" value={this.state.price} onChange={this.handleChange} />
+    padding: 10, boxSizing: 'border-box', justifyContent: "center", boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="price" value={this.state.price} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Qty:
                         <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
-    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="qty" value={this.state.qty} onChange={this.handleChange} />
+    padding: 10, boxSizing: 'border-box', justifyContent: "center", boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="qty" value={this.state.qty} onChange={this.handleChange} />
                     </label>
                     <br />
                     <input type="submit" value="Submit" />

@@ -61,7 +61,7 @@ export function FoodFindingMain(props) {
     .then(res => {
         const items = res.data;
         availableItems = items;
-        // this.setState({availableItems: items});
+        this.setState({availableItems: items});
     })
     console.log(availableItems);
     return (
