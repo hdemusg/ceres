@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import Realm from 'realm';
 import { StyleSheet, Text, View, TextInput, Button, Picker } from 'react-native';
-import {FoodFindingMain} from './FoodFindingView/FoodFindingMain.js'
+import { FoodFindingMain } from './FoodFindingView/FoodFindingMain.js'
 import axios from 'axios';
 
 axios.defaults.baseURL = "http://localhost:3000";
@@ -9,7 +9,7 @@ axios.defaults.baseURL = "http://localhost:3000";
 export function Auth() {
 
   const handleSignup = (email, password, selectedVal) => {
-    console.log(email, password, selectedVal)
+
     // alert(this.state.email + " " + this.state.password + " " + this.state.selectedValue);
   }
 
@@ -98,16 +98,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     boxSizing: 'border-box',
-    boxShadow: "0 0 0 #A0DFFD", 
+    boxShadow: "0 0 0 #A0DFFD",
     border: "1px #3C3C43",
     marginBottom: 30,
   },
   picker: {
-    height: 40, 
+    height: 40,
     width: 250,
     backgroundColor: "#fff",
     border: "1px #3C3C43",
-    boxSizing: "border-box", 
+    boxSizing: "border-box",
     borderRadius: 8,
   }
 });
