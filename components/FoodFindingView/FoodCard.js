@@ -1,30 +1,65 @@
 import React from 'react';
 import { View, StyleSheet, Text, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { addFoodItemMessage } from '../reducers/FoodItemsActions';
+import { bindActionCreators } from 'redux';
 
 
+const FoodCard = ({ foodItem, added, addFoodItemMessage }) => {
+    if (added) {
+        return (
+            <View style={styles.card}>
+                <View style={styles.imageCont}>
 
-const FoodCard = ({ foodItem }) => {
-    return (
-        <View style={styles.card}>
-            <View style={styles.imageCont}>
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.foodItemText}>{foodItem.title} </Text>
 
+                    <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
+                    <View style={styles.spacer}></View>
+
+                    <Button style={styles.ncrButton}
+                        title="Remove"
+                    />
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
+                    <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
+                </View>
             </View>
-            <View style={styles.rowContainer}>
-                <Text style={styles.foodItemText}>{foodItem.title} </Text>
+        );
+    } else {
+        return (
+            <View style={styles.card}>
+                <View style={styles.imageCont}>
 
-                <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
-                <View style={styles.spacer}></View>
-                <Button
-                    title="Add"
-                />
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.foodItemText}>{foodItem.title} </Text>
+
+                    <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
+                    <View style={styles.spacer}></View>
+
+                    <Button
+                        style={styles.ncrButton}
+                        title="Add"
+                        onPress={() => addFoodItemMessage(foodItem)}
+                    />
+                </View>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
+                    <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
+                </View>
             </View>
-            <View style={styles.rowContainer}>
-                <Text style={styles.vendorText}>{foodItem.vendor} | </Text>
-                <Text style={styles.vendorText}>Qty: {foodItem.qty}</Text>
-            </View>
-        </View>
-    );
+        );
+    }
 }
+
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({
+        addFoodItemMessage
+    }, dispatch)
+);
 
 const styles = StyleSheet.create({
     card: {
@@ -51,6 +86,13 @@ const styles = StyleSheet.create({
     },
     imageCont: {
         height: "50%"
-    }
+    },
+    ncrButton: {
+        width: 97,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: "#2E7DF7",
+        color: "white",
+    },
 });
-export default FoodCard;
+export default connect(null, mapDispatchToProps)(FoodCard);

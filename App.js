@@ -1,8 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native';
 import { Header } from './components/Header.js';
 import { Auth } from './components/Auth.js';
+import FoodFindingMain from './components/FoodFindingView/FoodFindingMain';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import PaymentMain from './components/PaymentView/PaymentView';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import FoodItemsReducer from './components/reducers/FoodItemsReducer';
 
 export default function App() {
 
@@ -18,21 +24,23 @@ export default function App() {
 }
 
 const Stack = createStackNavigator();
+const itemsStore = createStore(FoodItemsReducer);
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
-        <Stack.Screen name="Calculation" component={PaymentView} />
-      </Stack.Navigator>
-      {/* <View style={styles.container}>
-        <FoodFindingMain />
-      </View> */}
-    </NavigationContainer>
-
-  );
-}
+// export default function App() {
+//   return (
+//     <Provider store={itemsStore}>
+//       <NavigationContainer>
+//         <Stack.Navigator>
+//           <Stack.Screen name="Main" component={FoodFindingMain} options={{ title: 'Welcome' }} />
+//           <Stack.Screen name="Cart" component={PaymentMain} options={{ title: 'Cart' }} />
+//         </Stack.Navigator>
+//         {/* <View style={styles.container}>
+//         <FoodFindingMain />
+//       </View> */}
+//       </NavigationContainer>
+//     </Provider>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
