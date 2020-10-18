@@ -25,7 +25,7 @@ const FoodFindingMain = ({ navigation, availableItems, addedToCart, total }) => 
 
     return (
         <SafeAreaView style={styles.container}>
-            <Button
+            <Button style={style.ncrButton}
                 title="Checkout"
                 onPress={() => {
                     navigation.navigate('Cart', { cartItems: addedToCart });
@@ -51,11 +51,18 @@ const styles = StyleSheet.create({
     Footer: {
         width: '100%',
         height: 50,
-        backgroundColor: '#FF9800',
+        backgroundColor: '#1C1C1E',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
         bottom: 0
+    },
+    ncrButton: {
+        width: 97,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: "#2E7DF7",
+        color: "white",
     },
     doubleButton: {
         flexDirection: "row",

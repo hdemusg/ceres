@@ -18,7 +18,7 @@ const FoodCard = ({ foodItem, added, addFoodItemMessage }) => {
                     <Text style={styles.foodPriceText}> - ${foodItem.price}</Text>
                     <View style={styles.spacer}></View>
 
-                    <Button style={{ backgroundColor: "red" }}
+                    <Button style={styles.ncrButton}
                         title="Remove"
                     />
                 </View>
@@ -41,6 +41,7 @@ const FoodCard = ({ foodItem, added, addFoodItemMessage }) => {
                     <View style={styles.spacer}></View>
 
                     <Button
+                        style={styles.ncrButton}
                         title="Add"
                         onPress={() => addFoodItemMessage(foodItem)}
                     />
@@ -85,6 +86,13 @@ const styles = StyleSheet.create({
     },
     imageCont: {
         height: "50%"
-    }
+    },
+    ncrButton: {
+        width: 97,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: "#2E7DF7",
+        color: "white",
+    },
 });
 export default connect(null, mapDispatchToProps)(FoodCard);

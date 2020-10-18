@@ -48,9 +48,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     ncrButton: {
-        backgroundColor: "2E7DF7",
-        borderRadius: "10",
-        textAlign: "center"
+        width: 97,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: "#2E7DF7",
+        color: "white",
+        textAlign: "center",
     },
     spacer: {
         flexGrow: 2

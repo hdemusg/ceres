@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     cartItemWrapper: {
         width: "336",
         height: "56",
-        backgroundColor: "#ff0",
+        backgroundColor: "#EBEBF5",
     },
     rowContainer: {
         display: "flex",
