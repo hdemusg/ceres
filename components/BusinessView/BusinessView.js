@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from 'react-native';
 
-import {Component} from "react";
+import { Component } from "react";
 import FoodCard from "../FoodFindingView/FoodCard";
 
 export default class BusinessView extends Component {
@@ -14,16 +14,16 @@ export default class BusinessView extends Component {
             price: "",
             vendor: "",
             qty: ""
-        }
+        };
 
-        this.state = this.initialState
+        this.state = this.initialState;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -42,9 +42,9 @@ export default class BusinessView extends Component {
     renderItems() {
         let count = 0;
         return this.fooditems.map((item) => {
-                count++;
-                return <FoodCard foodItem={item} key={"FoodCard" + count}/>;
-            }
+            count++;
+            return <FoodCard foodItem={item} key={"FoodCard" + count} />;
+        }
         );
     }
 
@@ -54,25 +54,25 @@ export default class BusinessView extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Vendor:
-                        <input type="text" name="vendor" value={this.state.vendor} onChange={this.handleChange}/>
+                        <input type="text" name="vendor" value={this.state.vendor} onChange={this.handleChange} />
                     </label>
-                    <br/>
+                    <br />
                     <label>
                         Title:
-                        <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
+                        <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
                     </label>
-                    <br/>
+                    <br />
                     <label>
                         Price:
-                        <input type="text" name="price" value={this.state.price} onChange={this.handleChange}/>
+                        <input type="text" name="price" value={this.state.price} onChange={this.handleChange} />
                     </label>
-                    <br/>
+                    <br />
                     <label>
                         Qty:
-                        <input type="text" name="qty" value={this.state.qty} onChange={this.handleChange}/>
+                        <input type="text" name="qty" value={this.state.qty} onChange={this.handleChange} />
                     </label>
-                    <br/>
-                    <input type="submit" value="Submit"/>
+                    <br />
+                    <input type="submit" value="Submit" />
                 </form>
                 <ul>
                     {this.renderItems()}

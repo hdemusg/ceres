@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Picker } from 'react-native';
 import { Header } from './components/Header.js';
 import { Auth } from './components/Auth.js';
 import FoodFindingMain from './components/FoodFindingView/FoodFindingMain';
@@ -13,17 +13,16 @@ import FoodItemsReducer from './components/reducers/FoodItemsReducer';
 export default function App() {
 
   return (
-    <View style={{backgroundColor: "#555", flex: 1, fontFamily: "Futura"}}>
+    <View style={{ backgroundColor: "#555", flex: 1, fontFamily: "Futura" }}>
       <Header email={"Sign In"} />
       <View style={styles.container}>
         <Auth />
-        <StatusBar style="auto" />
       </View>
     </View>
   );
 }
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 const itemsStore = createStore(FoodItemsReducer);
 
 // export default function App() {
