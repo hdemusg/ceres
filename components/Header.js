@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
     flexDirection: "row",
-    backgroundColor: '#000',
+    backgroundColor: '#DBDBDB',
     alignItems: "center",
     justifyContent: "center",
   },
@@ -33,15 +33,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignItems: "center",
     fontSize: 20, 
-    color: "#0f0", 
+    color: "#469F3D", 
     flexgrow: 1,
     paddingLeft: 25,
   },
   email: {
-    fontSize: 20, 
+    fontSize: 16, 
     alignItems: "center",
     justifyContent: "right",
-    color: "#fff", 
+    color: "#000", 
     flexgrow: 2,
   }
 });

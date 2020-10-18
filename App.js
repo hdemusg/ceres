@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <View style={{backgroundColor: "#555", flex: 1, fontFamily: "Futura"}}>
-      <Header />
+      <Header email={"Sign In"} />
       <View style={styles.container}>
         <Auth />
         <StatusBar style="auto" />
@@ -20,7 +20,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#555",
+    backgroundColor: "#FFF",
     alignItems: 'center',
     justifyContent: 'center',
   },

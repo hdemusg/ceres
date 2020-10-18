@@ -39,7 +39,7 @@ export function Auth() {
       <Text style={styles.title}>Welcome!</Text>
       <TextInput style={styles.input} value={email} onChangeText={(text) => { onChangeEmail(text) }} placeholder={"email"}></TextInput>
       <TextInput style={styles.input} value={password} onChangeText={(text) => onChangePassword(text)} secureTextEntry={true} placeholder={"password"}></TextInput>
-      <Picker selectedValue={selectedValue} value={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+      <Picker style={styles.picker} selectedValue={selectedValue} value={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
         <Picker.Item label="Consumer" value="consumer" />
         <Picker.Item label="Messenger" value="messenger" />
         <Picker.Item label="Business" value="business" />
@@ -49,8 +49,8 @@ export function Auth() {
           flexDirection: "row",
           padding: 20
         }}>
-        <Button style={{ backgroundColor: '#0f0', color: '#fff' }} onPress={() => handleSignup(email, password, selectedValue)} title={"Sign Up"}></Button>
-        <Button style={{ backgroundColor: '#0f0', color: '#fff' }} onPress={() => handleLogin(email, password, selectedValue)} title={"Log In"}></Button>
+        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleSignup(email, password, selectedValue)} title={"Sign Up"}></Button>
+        <Button style={{ backgroundColor: '#2e7df7', color: '#fff', borderRadius: 8 }} onPress={() => handleLogin(email, password, selectedValue)} title={"Log In"}></Button>
       </View>
     </View>
   );
@@ -61,7 +61,7 @@ export function Auth() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#555",
+    backgroundColor: "#FFFFFF",
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignItems: 'center',
     justifyContent: 'center',
-    color: "#0f0",
+    color: "#469F3D",
   },
   instruction: {
     fontSize: 24,
@@ -78,7 +78,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
+    width: 250,
+    height: 40,
+    borderRadius: 8,
     backgroundColor: 'white',
     padding: 10,
+    boxSizing: 'border-box',
+    boxShadow: "0 0 0 #A0DFFD", 
+    border: "1px #3C3C43",
+    marginBottom: 30,
+  },
+  picker: {
+    height: 40, 
+    width: 250,
+    backgroundColor: "#fff",
+    border: "1px #3C3C43",
+    boxSizing: "border-box", 
+    borderRadius: 8,
   }
 });
