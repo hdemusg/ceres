@@ -3,16 +3,19 @@ import { View } from 'react-native';
 
 import { Component } from "react";
 import FoodCard from "../FoodFindingView/FoodCard";
+import axios from 'axios';
+axios.defaults.baseURL = "http://localhost:3000";
 
 export default class BusinessView extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.fooditems = [];
 
         this.initialState = {
             title: "",
             price: "",
-            vendor: "",
+            vendor: props.route.params.vendorName,
             qty: ""
         };
 
@@ -27,12 +30,21 @@ export default class BusinessView extends Component {
     }
 
     handleSubmit(event) {
-        this.fooditems.push({
+        let sellableFoodItem = {
             title: this.state.title,
             price: this.state.price,
             vendor: this.state.vendor,
             qty: this.state.qty
-        });
+        }
+        this.fooditems.push(sellableFoodItem);
+        axios.post('/food/produce', { title: this.state.title, price: this.state.price, vendor: this.state.vendor, qty: this.state.qty }, {headers:{"Content-Type":"application/json"}})
+        .then(res => {
+            console.log(res);
+        })
+        .catch(e => {
+            console.log(e);
+        })
+        
         console.log(this.fooditems);
         this.forceUpdate();
         this.setState(() => this.initialState)
@@ -42,8 +54,7 @@ export default class BusinessView extends Component {
     renderItems() {
         let count = 0;
         return this.fooditems.map((item) => {
-            count++;
-            return <FoodCard foodItem={item} key={"FoodCard" + count} />;
+            return <FoodCard userType="business" foodItem={item} key={"FoodCard" + count++} />;
         }
         );
     }
@@ -53,23 +64,21 @@ export default class BusinessView extends Component {
             <View>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Vendor:
-                        <input type="text" name="vendor" value={this.state.vendor} onChange={this.handleChange} />
-                    </label>
-                    <br />
-                    <label>
                         Title:
-                        <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+                        <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
+    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="title" value={this.state.title} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Price:
-                        <input type="text" name="price" value={this.state.price} onChange={this.handleChange} />
+                        <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
+    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="price" value={this.state.price} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Qty:
-                        <input type="text" name="qty" value={this.state.qty} onChange={this.handleChange} />
+                        <input style={{width: 250, height: 40, borderRadius: 8, backgroundColor: 'white',
+    padding: 10, boxSizing: 'border-box', boxShadow: "0 0 0 #A0DFFD", border: "1px #3C3C43",marginBottom: 30}} type="text" name="qty" value={this.state.qty} onChange={this.handleChange} />
                     </label>
                     <br />
                     <input type="submit" value="Submit" />

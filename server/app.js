@@ -19,4 +19,10 @@ mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser:true}, err => {
 const usersRoute = require("./routes/users");
 app.use("/users", usersRoute);
 
+const foodRoute = require("./routes/food");
+app.use("/food", foodRoute);
+
+const transRoute = require("./routes/transaction");
+app.use("/trans", transRoute);
+
 app.listen(3000);

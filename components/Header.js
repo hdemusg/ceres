@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 export class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
  
   render() {
     return (
@@ -14,7 +18,7 @@ export class Header extends Component {
           <Text style={styles.title}>ceres</Text>
         </View>
         <View style={{justifyContent: "flex-end", flex: 1}}>
-          <Text style={styles.email}>foo@bar.com</Text>
+    <Text style={styles.email}>{this.props.name}</Text>
         </View>
       </View>
     );

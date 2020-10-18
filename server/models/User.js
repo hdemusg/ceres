@@ -13,6 +13,9 @@ const UserSchema = mongoose.Schema(
         }, 
         name: {
             type: String,
+        }, 
+        balance: {
+            type: Number,
         }
     },
     { collection: "user" }

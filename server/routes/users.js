@@ -24,6 +24,7 @@ router.post("/signup", (req, res) => {
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,
+    balance: 0.00,
   });
 
   user

@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, StatusBar, Button, Alert } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import ShoppingCartItem from './ShoppingCartItem';
+import {Header} from '../Header';
 
 const PaymentMain = ({ route }) => {
     const renderShoppingCartItems = ({ item }) => {
@@ -13,6 +14,8 @@ const PaymentMain = ({ route }) => {
 
     let VIEW =
         <SafeAreaView style={styles.cont}>
+            <Header /> 
+            {/* todo Header should have a back button that re renders properly the old items */}
             <View>
                 <FlatList data={route.params.cartItems} renderItem={renderShoppingCartItems} keyExtractor={item => item.id} />
             </View>
