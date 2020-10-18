@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import Realm from 'realm';
 import { StyleSheet, Text, View, TextInput, Button, Picker } from 'react-native';
+import {FoodFindingMain} from './FoodFindingView/FoodFindingMain.js'
 import axios from 'axios';
 
 axios.defaults.baseURL = "http://localhost:3000";
@@ -17,7 +18,9 @@ export function Auth() {
       .then(res => {
         console.log(res.data[0]);
         if (res.data[0].password === password && res.data[0].role === selectedVal) {
-          console.log(true)
+          return (
+            <FoodFindingMain />
+          )
         } else {
           console.log(false)
         }
